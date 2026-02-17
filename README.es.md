@@ -1,7 +1,7 @@
 ## Sales Dashboard
 
 ## Read this documentation in English:
-[🇺🇸 English README](./README.md)
+[🇺🇸 English README](./README.md) 
 
 Sales Dashboard es una aplicación web para gestionar y analizar ventas.  
 Permite registrar productos y ventas, visualizar estadísticas y tendencias, y aplicar filtros por producto y rango de fechas.  
@@ -90,21 +90,25 @@ sales-dashboard/
 
 2. Entrar a la carpeta backend
 
-cd sales-dashboard/backend
+   ```bash
+   cd sales-dashboard/backend
 
 3. Crear entorno virtual
 
-python -m venv venv
-source venv/bin/activate   # Linux / Mac
-.\venv\Scripts\activate    # Windows
+   ```bash
+   python -m venv venv
+   source venv/bin/activate   # Linux / Mac
+   .\venv\Scripts\activate    # Windows
 
 4. Instalar dependencias
 
-pip install -r requirements.txt
+   ```bash
+   pip install -r requirements.txt
 
 5. Correr el servidor
 
-uvicorn app.main:app --reload
+   ```bash
+   uvicorn app.main:app --reload
 
 El backend será accesible en:
 
@@ -114,15 +118,18 @@ http://127.0.0.1:8000
 
 1. Ir a la carpeta frontend
 
-cd ../frontend
+   ```bash
+   cd ../frontend
 
 2. Instalar dependencias
 
-npm install
+   ```bash
+   npm install
 
 3. Levantar el frontend
 
-npm run dev
+   ```bash
+   npm run dev
 
 La app correrá en:
 
@@ -148,7 +155,7 @@ http://localhost:5173
 
 - Manejo de estados de error y carga.
 
--Validación en backend con mensajes claros.
+- Validación en backend con mensajes claros.
 
 - API con endpoints REST correctamente estructurados.
 
