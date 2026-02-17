@@ -30,89 +30,67 @@ function SalesTable({ sales }) {
     }));
   };
 
-  const getArrow = (key) => {
-    if (sortConfig.key !== key) return "↕";
-    return sortConfig.direction === "asc" ? "↑" : "↓";
-  };
-
   return (
-    <div style={tableWrapper}>
-      <table style={tableStyle}>
-        <thead style={theadStyle}>
-          <tr>
-            <th style={thStyle}>ID</th>
-            <th style={thStyle}>Producto</th>
-            <th style={thStyle}>Cantidad</th>
+    <table
+      style={{
+        width: "100%",
+        borderCollapse: "collapse",
+        marginTop: "1rem",
+        background: "#fff",
+        boxShadow: "0 4px 10px rgba(0,0,0,0.08)",
+        borderRadius: "8px",
+        overflow: "hidden",
+      }}
+    >
+      <thead style={{ background: "#f0f0f0" }}>
+        <tr>
+          <th style={thStyle}>ID</th>
+          <th style={thStyle}>Producto</th>
+          <th style={thStyle}>Cantidad</th>
 
-            <th
-              style={{ ...thStyle, cursor: "pointer" }}
-              onClick={() => handleSort("total")}
-            >
-              Total {getArrow("total")}
-            </th>
+          {/* ORDENAR POR TOTAL */}
+          <th
+            style={{ ...thStyle, cursor: "pointer" }}
+            onClick={() => handleSort("total")}
+          >
+            Total 
+          </th>
 
-            <th
-              style={{ ...thStyle, cursor: "pointer" }}
-              onClick={() => handleSort("date")}
-            >
-              Fecha {getArrow("date")}
-            </th>
+          {/* ORDENAR POR FECHA */}
+          <th
+            style={{ ...thStyle, cursor: "pointer" }}
+            onClick={() => handleSort("date")}
+          >
+            Fecha 
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {sortedSales.map((sale) => (
+          <tr key={sale.id}>
+            <td style={tdStyle}>{sale.id}</td>
+            <td style={tdStyle}>Producto {sale.product_id}</td>
+            <td style={tdStyle}>{sale.quantity}</td>
+            <td style={tdStyle}>${sale.total}</td>
+            <td style={tdStyle}>{sale.date}</td>
           </tr>
-        </thead>
-
-        <tbody>
-          {sortedSales.map((sale) => (
-            <tr key={sale.id} style={rowStyle}>
-              <td style={tdStyle}>{sale.id}</td>
-              <td style={tdStyle}>Producto {sale.product_id}</td>
-              <td style={tdStyle}>{sale.quantity}</td>
-              <td style={{ ...tdStyle, fontWeight: "600" }}>
-                ${sale.total}
-              </td>
-              <td style={tdStyle}>{sale.date}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+        ))}
+      </tbody>
+    </table>
   );
 }
 
-const tableWrapper = {
-  marginTop: "1.5rem",
-  borderRadius: "14px",
-  overflow: "hidden",
-  boxShadow: "0 10px 25px rgba(0,0,0,0.08)",
-};
-
-const tableStyle = {
-  width: "100%",
-  borderCollapse: "collapse",
-  background: "#ffffff",
-};
-
-const theadStyle = {
-  background: "#f9fafb",
-};
-
 const thStyle = {
-  padding: "14px 16px",
+  padding: "12px",
   textAlign: "left",
-  fontSize: "0.85rem",
-  fontWeight: "600",
-  color: "#374151",
-  borderBottom: "1px solid #e5e7eb",
+  fontSize: "0.9rem",
 };
 
 const tdStyle = {
-  padding: "14px 16px",
+  padding: "12px",
+  borderTop: "1px solid #eaeaea",
   fontSize: "0.9rem",
-  color: "#1f2937",
-  borderBottom: "1px solid #f0f0f0",
-};
-
-const rowStyle = {
-  transition: "background 0.2s ease",
 };
 
 export default SalesTable;
