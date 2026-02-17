@@ -1,6 +1,6 @@
 ## Sales Dashboard
 
-## Read this documentation in English:
+## Lee esta documentación en Inglés:
 [🇺🇸 English README](./README.md) 
 
 Sales Dashboard es una aplicación web para gestionar y analizar ventas.  
@@ -173,7 +173,7 @@ Este proyecto está preparado para futuras mejoras, tales como:
 
 ## Autor
 
-Erik Eduardo Escobar Farías
+Erik Eduardo Escobar Farias
 
 Proyecto full-stack desarrollado como práctica profesional utilizando React, FastAPI y SQLAlchemy. 
 Enfocado en arquitectura limpia, separación de responsabilidades, manejo de estado en frontend, diseño de APIs REST y aplicación de reglas de negocio reales para análisis y gestión de ventas.

@@ -1,16 +1,178 @@
-# React + Vite
+## Sales Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Read this documentation in Spanish:
+[🇪🇸 README en Español](./README.es.md)
 
-Currently, two official plugins are available:
+Sales Dashboard is a web application designed to manage and analyze sales data.  
+It allows users to register products and sales, visualize statistics and trends, and apply filters by product and date range.  
+It is intended to be part of a professional portfolio, demonstrating full-stack skills in **React**, **FastAPI**, **SQLAlchemy**, and full-stack application design.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## Main Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Functionalities
 
-## Expanding the ESLint configuration
+- Product management (CRUD).
+- Sales registration with custom date selection.
+- Dashboard with key metrics (KPIs).
+- Daily sales visualization through charts.
+- Product and date range filtering.
+- Sortable sales table.
+- Loading and error state handling in the interface.
+- Separate API using FastAPI for backend logic.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 📁 Project Structure
+
+```bash
+sales-dashboard/
+├── frontend/
+│ ├── src/
+│ │ ├── components/
+│ │ │ ├── SalesChart.jsx
+│ │ │ ├── KpiSection.jsx
+│ │ │ ├── SalesTable.jsx
+│ │ │ ├── ProductFilter.jsx
+│ │ │ ├── TopDayKpi.jsx
+│ │ │ ├── ProductManager.jsx
+│ │ │ └── SalesManager.jsx
+│ │ ├── services/
+│ │ │ ├── salesService.js
+│ │ │ └── productService.js
+│ │ ├── App.jsx
+│ │ ├── main.jsx
+│ │ └── index.css
+│ └── package.json
+├── backend/
+│ ├── app/
+│ │ ├── models.py
+│ │ ├── schemas.py
+│ │ ├── routers/
+│ │ │ ├── products.py
+│ │ │ └── sales.py
+│ │ └── main.py
+│ ├── database.py
+│ └── requirements.txt
+├── .gitignore
+└── README.md
+```
+
+## Technologies Used
+# Frontend
+
+- React
+
+- Recharts for data visualization
+
+- Fetch API
+
+- Modern CSS (modular styling)
+
+# Backend
+
+- FastAPI (Python)
+
+- SQLAlchemy ORM
+
+- Pydantic for validation
+
+- SQLite (local database)
+
+## Installation and Setup
+# Local — Backend
+
+1. Clone the repository
+
+   ```bash
+   git clone https://github.com/erikescofar19/sales-dashboard.git
+
+2. Navigate to the backend folder
+
+   ```bash
+   cd sales-dashboard/backend
+   
+3. Create a virtual environment
+
+   ```bash
+   python -m venv venv
+   source venv/bin/activate   # Linux / Mac
+   .\venv\Scripts\activate    # Windows
+
+4. Install dependencies
+
+   ```bash
+   pip install -r requirements.txt
+
+5. Run the server
+
+   ```bash
+   uvicorn app.main:app --reload
+
+The backend will be available at:
+
+http://127.0.0.1:8000
+
+# Local — Frontend
+
+1. Navigate to the frontend folder
+
+   ```bash
+   cd ../frontend
+
+2. Install dependencies
+
+   ```bash
+   npm install
+
+3. Start the development server
+
+   ```bash
+   npm run dev
+
+The application will run at:
+
+http://localhost:5173
+
+## Usage
+
+- Upon entering the application, you will see the dashboard with general metrics.
+
+- Use “Register Sale” to create new sales with a specific date.
+
+- Use “Product Management” to add or edit products.
+
+- Filter sales by product and date range.
+
+-  The table allows sorting by total amount and date.
+
+## Implemented Best Practices
+
+- Clear separation between frontend and backend logic.
+
+- Modular component architecture.
+
+- Proper loading and error state handling.
+
+- Backend validation with clear error messages.
+
+- REST API endpoints correctly structured.
+
+## Continuous Improvement
+
+This project is prepared for future improvements such as:
+
+- User authentication.
+
+- Multi-user dashboards.
+
+- Export reports to CSV/PDF.
+
+- Deployment to services such as Vercel/Render.
+
+## Author
+Erik Eduardo Escobar Farias
+
+Full-stack project developed as professional practice using React, FastAPI, and SQLAlchemy.
+Focused on clean architecture, separation of concerns, frontend state management, REST API design, and implementation of real-world business rules for sales analysis and management.
