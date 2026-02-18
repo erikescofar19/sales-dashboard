@@ -1,63 +1,13 @@
-const BASE_URL = "http://127.0.0.1:8000/sales";
+const API_URL = "https://sales-dashboard-1jev.onrender.com";
 
-/**
- * Manejo centralizado de respuestas HTTP
- */
-const handleResponse = async (res) => {
-  let data = null;
-
-  try {
-    data = await res.json();
-  } catch {
-    // Si no viene JSON válido
-    data = null;
-  }
-
-  if (!res.ok) {
-    throw {
-      message: data?.detail || "Error en la petición",
-      status: res.status,
-      isNetworkError: false,
-    };
-  }
-
-  return data;
-};
-
-/**
- * Manejo centralizado de errores de red
- */
-const handleNetworkError = (error, fallbackMessage) => {
-  if (error?.status) {
-    // Error controlado desde handleResponse
-    throw error;
-  }
-
-  // Error de red (backend apagado, CORS, etc.)
-  throw {
-    message: fallbackMessage,
-    status: 500,
-    isNetworkError: true,
-  };
-};
-
-// ==============================
-// GET SALES
-// ==============================
 export const getSales = async () => {
-  try {
-    const res = await fetch(`${BASE_URL}/`);
-    return await handleResponse(res);
-  } catch (error) {
-    handleNetworkError(error, "No se pudieron obtener las ventas");
-  }
+  const res = await fetch(`${API_URL}/sales/`);
+  if (!res.ok) throw new Error("Error fetching sales");
+  return res.json();
 };
 
-// ==============================
-// GET SUMMARY
-// ==============================
 export const getSummary = async (startDate, endDate) => {
-  let url = `${BASE_URL}/summary`;
+  let url = `${API_URL}/sales/summary`;
   const params = new URLSearchParams();
 
   if (startDate) params.append("start", startDate);
@@ -67,27 +17,26 @@ export const getSummary = async (startDate, endDate) => {
     url += `?${params.toString()}`;
   }
 
-  try {
-    const res = await fetch(url);
-    return await handleResponse(res);
-  } catch (error) {
-    handleNetworkError(error, "No se pudo obtener el resumen");
-  }
+  const res = await fetch(url);
+  if (!res.ok) throw new Error("Error fetching summary data");
+  return res.json();
 };
 
-// ==============================
-// CREATE SALE
-// ==============================
 export const createSale = async (payload) => {
-  try {
-    const res = await fetch(`${BASE_URL}/`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
+  const res = await fetch(`${API_URL}/sales/`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
 
-    return await handleResponse(res);
-  } catch (error) {
-    handleNetworkError(error, "No se pudo crear la venta");
+  if (!res.ok) {
+    const errorData = await res.json();
+    throw new Error(
+      errorData.detail
+        ? JSON.stringify(errorData.detail)
+        : "Error creating sale"
+    );
   }
+
+  return res.json();
 };
