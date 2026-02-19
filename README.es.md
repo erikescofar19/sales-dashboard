@@ -7,6 +7,13 @@ Sales Dashboard es una aplicación web para gestionar y analizar ventas.
 Permite registrar productos y ventas, visualizar estadísticas y tendencias, y aplicar filtros por producto y rango de fechas.  
 Está diseñado para ser parte de tu portafolio, demostrando habilidades completas en **React**, **FastAPI**, **SQLAlchemy**, y diseño de aplicaciones full-stack.
 
+## 🚀 Demo en Vivo
+
+- **Aplicación en Producción:** https://sales-dashboard-erikescofar19s-projects.vercel.app/
+- **API en Producción:** https://sales-dashboard-1jev.onrender.com
+- **Documentación de la API (Swagger):** https://sales-dashboard-1jev.onrender.com/docs
+
+
 ---
 
 ## Características principales
