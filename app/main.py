@@ -8,17 +8,18 @@ from app.routers.dashboard import router as dashboard_router
 
 app = FastAPI(title="Sales Dashboard API")
 
-# 🔥 CONFIGURACIÓN CORS CORRECTA
+# 🔥 CONFIGURACIÓN CORS ACTUALIZADA
 origins = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
+    "https://sales-dashboard-erikescofar19s-projects.vercel.app",
 ]
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
     allow_credentials=True,
-    allow_methods=["*"],   # permite GET, POST, PUT, DELETE, OPTIONS
+    allow_methods=["*"],
     allow_headers=["*"],
 )
 
@@ -27,7 +28,11 @@ Base.metadata.create_all(bind=engine)
 
 @app.get("/")
 def root():
-    return {"message": "Sales Dashboard API running"}
+    return {
+        "project": "Sales Dashboard API",
+        "status": "running",
+        "docs": "/docs"
+    }
 
 # routers
 app.include_router(sales_router)
