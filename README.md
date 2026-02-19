@@ -9,6 +9,13 @@ It is intended to be part of a professional portfolio, demonstrating full-stack 
 
 ---
 
+## 🚀 Live Demo
+
+- **Live Application:** https://sales-dashboard-erikescofar19s-projects.vercel.app/
+- **Live API:** https://sales-dashboard-1jev.onrender.com
+- **API Documentation (Swagger):** https://sales-dashboard-1jev.onrender.com/docs
+
+---
 ## Main Features
 
 ### Functionalities
